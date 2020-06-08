@@ -3,13 +3,13 @@ variable "env" {
 }
 
 locals {
-  name = "ceslinkaccount"
   tags = {
     env              = "${var.env}"
     data-sensitivity = "public"
-    repo             = "https://github.com/byu-oit/${local.name}"
+    repo             = "https://github.com/byu-oit/ceslinkaccount-webapp"
   }
-  url_prefix = (var.env == 'prd') ? 'account' : 'account-${var.env}'
+  url_prefix = (var.env == "prd") ? "account" : "account-${var.env}"
+  url        = "${local.url_prefix}.churcheducationalsystem.org"
 }
 
 provider "aws" {
@@ -18,23 +18,22 @@ provider "aws" {
 }
 
 data "aws_route53_zone" "zone" {
-  name = "${url_prefix}.churcheducationalsystem.org"
+  name = local.url
 }
 
 module "s3_site" {
   source = "github.com/byu-oit/terraform-aws-s3staticsite?ref=v2.0.1"
   //  source         = "../."
-  site_url       = "${url_prefix}.churcheducationalsystem.org"
+  site_url       = local.url
   hosted_zone_id = data.aws_route53_zone.zone.id
-  s3_bucket_name = "terraform-module-dev-s3staticsite"
-  tags = {
-    "data-sensitivity" = "confidential"
-    "env"              = "${var.env}"
-    "repo"             = "https://github.com/byu-oit/ceslinkaccount-webapp"
-  }
+  s3_bucket_name = local.url
+  tags           = local.tags
 }
 
+output "s3_bucket" {
+  value = module.s3_site.site_bucket.bucket
+}
 
-output "url" {
-  value = module.my_fargate_api.dns_record.name
+output "cf_distribution_id" {
+  value = module.s3_site.cf_distribution.id
 }

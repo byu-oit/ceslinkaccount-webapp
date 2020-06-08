@@ -3,15 +3,15 @@ variable "env" {
 }
 
 locals {
-  name = "ceslinkaccount"
-  url_prefix = (var.env == 'prd') ? 'account' : 'account-${var.env}' 
+  name       = "ceslinkaccount"
+  url_prefix = (var.env == "prd") ? "account" : "account-${var.env}"
+  url        = "${local.url_prefix}.churcheducationalsystem.org"
 }
 
 resource "aws_route53_zone" "zone" {
-  name = "${url_prefix}.churcheducationalsystem.org"
+  name = local.url
 }
 
-module "my_ecr" {
-  source = "github.com/byu-oit/terraform-aws-ecr?ref=v1.1.0"
-  name   = "${local.name}-${var.env}"
+output "hosted_zone" {
+  value = aws_route53_zone.zone
 }
