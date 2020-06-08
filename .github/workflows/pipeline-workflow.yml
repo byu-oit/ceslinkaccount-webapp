@@ -8,7 +8,7 @@ env:
 
 jobs:
   build_and_deploy:
-    name: Build and deploy Fargate API to dev
+    name: Build and deploy Webapp to S3
     runs-on: ubuntu-latest
     steps:
       - name: Setup DEV Environment Variables
@@ -35,6 +35,11 @@ jobs:
 
       - name: Check out
         uses: actions/checkout@v2
+
+      - name: Disallow Concurrent Runs
+        uses: byu-oit/github-action-disallow-concurrent-runs@v1
+        with:
+          token: ${{ github.token }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
