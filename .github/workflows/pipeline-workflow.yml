@@ -112,6 +112,6 @@ jobs:
         with:
           status: ${{ job.status }}
           fields: repo,message,commit,author,action,eventName,ref,workflow # selectable (default: repo,message)
-          channel: CEXRQ7VG9 #custom-code-bots
+          channel: ${{ env.slack_channel }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.slack_webhook_url }} # required
