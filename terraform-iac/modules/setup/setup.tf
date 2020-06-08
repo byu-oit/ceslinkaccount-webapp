@@ -2,18 +2,13 @@ variable "env" {
   type = string
 }
 
-variable "some_secret" {
-  type = string
-}
-
 locals {
   name = "ceslinkaccount"
+  url_prefix = (var.env == 'prd') ? 'account' : 'account-${var.env}' 
 }
 
-resource "aws_ssm_parameter" "some_secret" {
-  name  = "/${local.name}/${var.env}/some-secret"
-  type  = "SecureString"
-  value = var.some_secret
+resource "aws_route53_zone" "zone" {
+  name = "${url_prefix}.churcheducationalsystem.org"
 }
 
 module "my_ecr" {
