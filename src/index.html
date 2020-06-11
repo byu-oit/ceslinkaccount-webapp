@@ -1,27 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<title>Example</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        .imgTopAlign {
+            vertical-align: top;
+        }
+    </style>
+    <title>Example</title>
 </head>
 <body>
-
-
+<table width="100%">
+    <tr>
+        <td></td>
+        <td>
+            <div align="middle">
+                <table width="600px">
+                    <tr>
+                        <td class="imgTopAlign" align="middle"><img src="images/BYUlogo.svg" alt=""/></td>
+                        <td class="imgTopAlign" align="middle"><img src="images/BYUIlogo.svg" alt=""/></td>
+                        <td class="imgTopAlign" align="middle"><img src="images/LDSBClogo.svg" alt=""/></td>
+                        <td class="imgTopAlign" align="middle"><img src="images/BYUHlogo.svg" alt=""/></td>
+                        <td class="imgTopAlign" align="middle"><img src="images/Pathwaylogo.svg" alt=""/></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+        <td>
+            <div style="border: 1px solid #707070; border-radius: 4px; text-align: center; padding: 20px 0px; text-align: center; font: 18px/30px Roboto; letter-spacing: 0px; color: #006D8E;
+">
+                Sign Out
+            </div>
+        </td>
+    </tr>
+</table>
+<hr/>
 <p>
-Hello World 5</p>
+    Hello World 6
+</p>
 
 
 <script>
-	$(document).ready(function () {
-		console.log('ready!')
-		$.get( "https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/api/isAccountAlreadyAssociated", function( data ) {
-			console.log('ready2!')
-			console.log(data)
-			console.log('ready3!')
+  $(document).ready(function () {
+    console.log('ready!')
+    $.get('https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/api/isAccountAlreadyAssociated', function (data) {
+      console.log('ready2!')
+      console.log(data)
+      console.log('ready3!')
 
-		});
+    })
 
-	})
+  })
 </script>
 </body>
 </html>
