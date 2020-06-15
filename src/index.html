@@ -19,7 +19,7 @@
     <title>CES Link Account</title>
 </head>
 <body>
-<table width="100%" style="border-collapse: collapse; line-height: 45px;">
+<table width="100%" style="border-collapse: collapse; line-height: 45px; display: none;">
     <tr>
         <td colspan="5" style="line-height: 15px;">&nbsp;</td>
     </tr>
@@ -83,11 +83,13 @@
 <script>
   $(document).ready(function () {
     console.log('ready!')
-    $.get('https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/api/isAccountAlreadyAssociated', function (data) {
+    $.getJSON('https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/api/areTheyLoggedIn', function (data) {
+      $.each(data, function(i, field){
+        console.log(i +": "+ field)
+      });
       console.log('ready2!')
-      console.log(data)
+      console.log(data.accountLoggedIn)
       console.log('ready3!')
-
     })
 
   })
