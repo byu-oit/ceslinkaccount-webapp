@@ -86,11 +86,14 @@
     $.getJSON('https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/api/areTheyLoggedIn', function (data) {
       console.log('ready2!')
       $.each(data, function(i, field){
+      console.log('ready3!')
         console.log(i +": "+ field) //this works too accountLoggedIn: true
       });
-      console.log('ready3!')
-      console.log(data.accountLoggedIn) //this works
       console.log('ready4!')
+      console.log(data) //this works
+      console.log('ready5!')
+      console.log(data.accountLoggedIn) //this works
+      console.log('ready6!')
     })
 
   })
