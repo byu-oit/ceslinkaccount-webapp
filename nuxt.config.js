@@ -1,5 +1,3 @@
-import implicitgrant from './plugins/implicitgrant'
-
 require('dotenv').config()
 export default {
   mode: 'spa',
@@ -44,10 +42,6 @@ export default {
         src:
           'https://cdn.byu.edu/byu-theme-components/2.x.x/byu-theme-components.min.js',
         async: true
-      },
-      {
-        src: 'implicitgrant.js',
-        type: 'module'
       }
     ]
   },
@@ -69,7 +63,6 @@ export default {
   buildModules: [
     // '@nuxt/typescript-build',
     '@nuxtjs/vuetify'
-    // '~/modules/implicitgrant/index.js'
     // '@byu-oit/aim-nuxt-builder',
     // '@byu-oit/sis-vue-nuxt'
   ],

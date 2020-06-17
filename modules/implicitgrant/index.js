@@ -1,10 +1,9 @@
 const path = require('path');
 exports.default = async function (config) {
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
   if (!process.env.NUXT_ENV_OAUTH_CLIENT_ID || !process.env.NUXT_ENV_OAUTH_CALLBACK_URL) {
     throw new Error('Missing OAuth config in environment variables')
   }
-  this.addTemplate({
+  this.addPlugin({
     src: path.resolve(__dirname, './plugin.js'),
     fileName: 'implicitgrant.js',
     options: {
