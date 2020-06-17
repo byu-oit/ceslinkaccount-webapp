@@ -84,9 +84,12 @@ jobs:
         working-directory: ${{ env.tf_working_dir }}
         run: terraform output s3_bucket
 
-      - name: Copy src to S3 site bucket
-        run: aws s3 sync src s3://${{ steps.s3_tf_outputs.outputs.stdout }}
+      - name: Copy dist to S3 site bucket
+        run: aws s3 sync dist s3://${{ steps.s3_tf_outputs.outputs.stdout }}
 
+#      - name: Copy src to S3 site bucket
+#        run: aws s3 sync src s3://${{ steps.s3_tf_outputs.outputs.stdout }}
+#
       - name: Get CloudFront distribution ID
         id: cf_tf_outputs
         working-directory: ${{ env.tf_working_dir }}
