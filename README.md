@@ -1,6 +1,6 @@
 # ceslinkaccount-webapp
 
-> My groundbreaking Nuxt.js project
+> My attempt at nuxt
 
 ## Build Setup
 
