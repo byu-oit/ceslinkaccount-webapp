@@ -1,76 +1,140 @@
-import colors from 'vuetify/es5/util/colors'
+import implicitgrant from './plugins/implicitgrant'
 
+require('dotenv').config()
 export default {
   mode: 'spa',
   /*
-  ** Headers of the page
-  */
+   ** Headers of the page
+   */
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s',
+    title: 'CES Link Account',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'This is for the CES linking account thingy'
+      }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
+      },
+      {
+        rel: 'stylesheet',
+        href:
+          'https://cdn.byu.edu/byu-theme-components/2.x.x/byu-theme-components.min.css'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.byu.edu/theme-fonts/1.x.x/ringside/fonts.css'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://cdn.byu.edu/theme-fonts/1.x.x/public-sans/fonts.css'
+      }
+    ],
+    script: [
+      {
+        src:
+          'https://cdn.byu.edu/byu-theme-components/2.x.x/byu-theme-components.min.js',
+        async: true
+      },
+      {
+        src: 'implicitgrant.js',
+        type: 'module'
+      }
     ]
   },
   /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
+   ** Customize the progress-bar color
+   */
+  loading: { color: '#002E5D' },
   /*
-  ** Global CSS
-  */
-  css: [
-  ],
+   ** Global CSS
+   */
+  css: ['~/assets/style/app.sass', '~/assets/style/page-transition.css'],
   /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
+   ** Plugins to load before mounting the App
+   */
+  plugins: [],
   /*
-  ** Nuxt.js dev-modules
-  */
+   ** Nuxt.js dev-modules
+   */
   buildModules: [
-    '@nuxtjs/vuetify',
+    // '@nuxt/typescript-build',
+    '@nuxtjs/vuetify'
+    // '~/modules/implicitgrant/index.js'
+    // '@byu-oit/aim-nuxt-builder',
+    // '@byu-oit/sis-vue-nuxt'
   ],
   /*
-  ** Nuxt.js modules
-  */
+   ** Nuxt.js modules
+   */
   modules: [
+    // Doc: https://axios.nuxtjs.org/usage
+    '@nuxtjs/axios',
+    // Doc: https://github.com/nuxt-community/dotenv-module
+    '@nuxtjs/dotenv',
+    '~/modules/implicitgrant/index.js'
   ],
   /*
-  ** vuetify module configuration
-  ** https://github.com/nuxt-community/vuetify-module
-  */
+   ** Axios module configuration
+   ** See https://axios.nuxtjs.org/options
+   */
+  axios: {},
+  /*
+   ** vuetify module configuration
+   ** https://github.com/nuxt-community/vuetify-module
+   */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: true,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
+        light: {
+          primary: '#002E5D',
+          secondary: '#666666',
+          accent: '#0062B8',
+          error: '#A3082A',
+          info: '#006073',
+          success: '#10A170',
+          warning: '#FFB700',
+          light: '#FAFAFA'
         }
       }
     }
   },
   /*
-  ** Build configuration
-  */
+   ** AIM module configuration
+   */
+  aim: {
+    routes: {
+      classic: true
+    },
+    core: {
+      clientId: process.env.NUXT_ENV_OAUTH_CLIENT_ID,
+      callbackUrl: process.env.NUXT_ENV_OAUTH_CALLBACK_URL,
+      autoRefreshOnTimeout: process.env.NUXT_ENV_AUTO_REFRESH_ON_TIMEOUT
+    }
+  },
+  /*
+   ** Build configuration
+   */
   build: {
     /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
+     ** You can extend webpack config here
+     */
+    extend(config) {
+      /*
+       ** TODO SIS Vue Library should precompile templates during build
+       ** Doc: https://github.com/nuxt/nuxt.js/issues/1142#issuecomment-317272538
+       */
+      config.resolve.alias.vue = 'vue/dist/vue.common'
     }
   }
 }
