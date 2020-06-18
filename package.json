@@ -16,7 +16,8 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "dotenv": "^8.2.0",
     "dynamic-import-polyfill": "^0.1.1",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0"

@@ -37,13 +37,7 @@ export default {
         href: 'https://cdn.byu.edu/theme-fonts/1.x.x/public-sans/fonts.css'
       }
     ],
-    script: [
-      {
-        src:
-          'https://cdn.byu.edu/byu-theme-components/2.x.x/byu-theme-components.min.js',
-        async: true
-      }
-    ]
+    script: []
   },
   /*
    ** Customize the progress-bar color
@@ -74,7 +68,7 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '~/modules/implicitgrant/index.js'
+    '~/modules/auth/index.js'
   ],
   /*
    ** Axios module configuration
