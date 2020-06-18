@@ -62,8 +62,8 @@ jobs:
 
       - name: Generate
         env:
-          NUXT_ENV_OAUTH_CLIENT_ID: ${{ secrets[env.client_id_name] }}
-          NUXT_ENV_OAUTH_CALLBACK_URL: ${{ secrets[env.callback_url_name] }}
+          NUXT_ENV_OAUTH_CLIENT_ID: ${{ env.client_id_name }}
+          NUXT_ENV_OAUTH_CALLBACK_URL: ${{ env.callback_url_name }}
         run: npm run generate
 
       - name: Terraform Setup
