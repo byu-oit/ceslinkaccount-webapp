@@ -62,6 +62,7 @@ jobs:
         env:
           NUXT_ENV_OAUTH_CLIENT_ID: ${{ secrets[client_id_name] }}
           NUXT_ENV_OAUTH_CALLBACK_URL: ${{ secrets[callback_url_name] }}
+          run: npm run generate
 
       - name: Terraform Setup
         uses: hashicorp/setup-terraform@v1
