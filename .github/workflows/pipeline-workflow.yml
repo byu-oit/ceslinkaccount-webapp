@@ -56,8 +56,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12'
+
       - name: Install
         run: npm install --unsafe-perm
+
       - name: Generate
         env:
           NUXT_ENV_OAUTH_CLIENT_ID: ${{ secrets[client_id_name] }}
