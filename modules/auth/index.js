@@ -1,8 +1,5 @@
 const path = require('path');
 exports.default = async function () {
-  console.log('AAAAAAAAAAAAAAAAAAA')
-  console.log(process.env.NUXT_ENV_OAUTH_CLIENT_ID)
-  console.log(process.env.NUXT_ENV_OAUTH_CALLBACK_URL)
   if (!process.env.NUXT_ENV_OAUTH_CLIENT_ID || !process.env.NUXT_ENV_OAUTH_CALLBACK_URL) {
     throw new Error('Missing OAuth config in environment variables')
   }

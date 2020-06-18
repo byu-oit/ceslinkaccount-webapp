@@ -9,11 +9,13 @@
 </template>
 
 <script>
-export default {
-  computed: {
-    username () {
-      return this.$store.getters['root/username'] || 'World'
+  import { mapGetters } from 'vuex'
+  export default {
+    computed: {
+      ...mapGetters([
+        'username'
+      ])
     }
   }
-}
+
 </script>
