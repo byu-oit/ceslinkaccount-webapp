@@ -15,8 +15,6 @@ jobs:
         if: github.ref == 'refs/heads/dev'
         run: |
           echo "::set-env name=aws_key::${{ secrets.ces_identity_dev_key }}"
-          echo "::set-env name=client_id_name::${{ secrets.dev_client_id }}"
-          echo "::set-env name=callback_url_name::${{ secrets.dev_callback_url }}"
           echo "::set-env name=aws_secret::${{ secrets.ces_identity_dev_secret }}"
           echo "::set-env name=tf_working_dir::./terraform-iac/dev/app"
           echo "::set-env name=std_change_key::${{ secrets.standard_change_sandbox_client_key }}"
@@ -28,8 +26,6 @@ jobs:
         if: github.ref == 'refs/heads/master'
         run: |
           echo "::set-env name=aws_key::${{ secrets.ces_identity_prd_key }}"
-          echo "::set-env name=client_id_name::${{ secrets.prd_client_id }}"
-          echo "::set-env name=callback_url_name::${{ secrets.prd_callback_url }}"
           echo "::set-env name=aws_secret::${{ secrets.ces_identity_prd_secret }}"
           echo "::set-env name=tf_working_dir::./terraform-iac/prd/app"
           echo "::set-env name=std_change_key::${{ secrets.standard_change_production_client_key }}"
@@ -51,20 +47,6 @@ jobs:
           aws-access-key-id: ${{ env.aws_key }}
           aws-secret-access-key: ${{ env.aws_secret }}
           aws-region: us-west-2
-
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12'
-
-      - name: Install
-        run: npm install --unsafe-perm
-
-      - name: Generate
-        env:
-          NUXT_ENV_OAUTH_CLIENT_ID: ${{ env.client_id_name }}
-          NUXT_ENV_OAUTH_CALLBACK_URL: ${{ env.callback_url_name }}
-        run: npm run generate
 
       - name: Terraform Setup
         uses: hashicorp/setup-terraform@v1
@@ -102,8 +84,8 @@ jobs:
         working-directory: ${{ env.tf_working_dir }}
         run: terraform output s3_bucket
 
-      - name: Copy dist to S3 site bucket
-        run: aws s3 sync dist s3://${{ steps.s3_tf_outputs.outputs.stdout }}
+      - name: Copy src to S3 site bucket
+        run: aws s3 sync src s3://${{ steps.s3_tf_outputs.outputs.stdout }}
 
       - name: Get CloudFront distribution ID
         id: cf_tf_outputs
