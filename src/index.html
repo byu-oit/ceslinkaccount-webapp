@@ -84,7 +84,7 @@
 <script>
   // http://localhost:63342/ceslinkaccount-webapp/src/index.html?mail=a%40b.com&givenName=Samuel%20Lyons&byuNetId=swlyons
   $(document).ready(function () {
-    $( "li" ).hover(
+    $( "signOutButton" ).hover(
       function() {
         $( this ).attr("style", "cursor: pointer; border: 1px solid #006D8E; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; color: #707070;");
       }, function() {
@@ -127,7 +127,7 @@
   }
 
   function signOut(){
-    window.location.href = "https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginPut"
+    window.location.href = "https://ident-dev.churcheducationalsystem.org/cas/logout"
   }
 
   var getUrlParameter = function getUrlParameter (sParam) {
