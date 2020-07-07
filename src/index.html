@@ -39,7 +39,7 @@
             </div>
         </td>
         <td width="100px" class="imgTopAlign" style="padding-right: 25px;">
-            <div style=" cursor: pointer; border: 1px solid #707070; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; color: #006D8E;">
+            <div id="signOutButton" onclick="signOut()" style="cursor: pointer; border: 1px solid #707070; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; color: #006D8E;">
                 Sign Out
             </div>
         </td>
@@ -83,8 +83,15 @@
 
 <script>
   // http://localhost:63342/ceslinkaccount-webapp/src/index.html?mail=a%40b.com&givenName=Samuel%20Lyons&byuNetId=swlyons
-  //TODO: handle error case a bit better
   $(document).ready(function () {
+    $( "li" ).hover(
+      function() {
+        $( this ).attr("style", "cursor: pointer; border: 1px solid #006D8E; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; color: #707070;");
+      }, function() {
+        $( this ).attr("style", "cursor: pointer; border: 1px solid #707070; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; color: #006D8E;");
+      }
+    );
+
     if (!getUrlParameter('givenName') || !getUrlParameter('mail')) {
       window.location.replace('https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginGet')
     }
@@ -116,6 +123,10 @@
   })
 
   function addAccount(){
+    window.location.href = "https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginPut"
+  }
+
+  function signOut(){
     window.location.href = "https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginPut"
   }
 
