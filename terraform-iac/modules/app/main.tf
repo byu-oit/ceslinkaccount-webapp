@@ -9,7 +9,7 @@ locals {
     repo             = "https://github.com/byu-oit/ceslinkaccount-webapp"
   }
   url_prefix = (var.env == "prd") ? "account" : "account-${var.env}"
-  url        = "${local.url_prefix}.churcheducationalsystem.org"
+  url        = "${local.url_prefix}.admissionsapplicationsystem.org"
 }
 
 provider "aws" {
