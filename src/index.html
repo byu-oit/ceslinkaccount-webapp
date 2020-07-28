@@ -12,70 +12,52 @@
             border-bottom: #DDDDDD 2px solid;
         }
 
-        .boldFontWeight {
-            font-weight: bold;
-        }
     </style>
     <title>CES Link Account</title>
 </head>
 <body>
-<table width="100%" style="border-collapse: collapse; line-height: 45px;">
-    <tr>
-        <td colspan="5" style="line-height: 15px;">&nbsp;</td>
-    </tr>
+
+<table width="100%" style="border-collapse: collapse; line-height: 54px;">
     <tr class="bottomBorder">
-        <td width="30%"></td>
-        <td colspan="3">
-            <div>
-                <table width="600px">
-                    <tr>
-                        <td class="imgTopAlign"><img src="images/BYUlogo.svg" width="94" alt=""/></td>
-                        <td class="imgTopAlign"><img src="images/BYUIlogo.svg" width="94" alt=""/></td>
-                        <td class="imgTopAlign"><img src="images/LDSBClogo.svg" width="88" alt=""/></td>
-                        <td class="imgTopAlign"><img src="images/BYUHlogo.svg" width="94" alt=""/></td>
-                        <td class="imgTopAlign"><img src="images/Pathwaylogo.svg" width="94" alt=""/></td>
-                    </tr>
-                </table>
-            </div>
-        </td>
+        <td style="padding-left: 20px;"><span style="font: 18px/22px Roboto; font-weight: bold;">Admissions Application System</span></td>
+        <td id="bannerName" style="text-align: right; font: 18px/22px Roboto;"></td>
         <td width="100px" class="imgTopAlign" style="padding-right: 25px;">
-            <div id="signOutButton" onclick="signOut()" style="cursor: pointer; border: 1px solid #707070; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; color: #006D8E;">
-                Sign Out
+            <div id="signOutButton" onclick="signOut()" style="cursor: pointer; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; font-weight: bold;">
+                SIGN OUT
             </div>
         </td>
     </tr>
+</table>
+<table width="100%" style="border-collapse: collapse; line-height: 45px;">
+    <tr><td colspan="4">&nbsp;</td></tr>
     <tr>
-        <td colspan="5" style="line-height: 25px;">&nbsp;</td>
+        <td width="30%"></td>
+        <td width="150px" style="font: 18px/40px Roboto;">Name:</td>
+        <td id="givenName" width="250px" style="font: 18px/40px Roboto; font-weight: bold;"></td>
+        <td></td>
     </tr>
     <tr>
         <td></td>
-        <td width="150px">Name:</td>
-        <td id="givenName" width="250px" class="boldFontWeight"></td>
-        <td colspan="2"></td>
-    </tr>
-    <tr>
+        <td style="font: 18px/40px Roboto;">Email:</td>
+        <td id="mail" style="font: 18px/40px Roboto; font-weight: bold;"></td>
         <td></td>
-        <td>Email:</td>
-        <td id="mail" class="boldFontWeight"></td>
-        <td colspan="2"></td>
     </tr>
     <tr>
         <td colspan="5" style="line-height: 25px;">&nbsp;</td>
     </tr>
     <tr id="byuAccountRow" style="display: none;">
         <td></td>
-        <td class="boldFontWeight">BYU Net ID:</td>
-        <td id="byuNetId"></td>
+        <td style="font: 18px/22px Roboto; font-weight: bold;">BYU Net ID:</td>
+        <td id="byuNetId" style="font: 18px/22px Roboto;"></td>
         <td style="font: 18px/22px Roboto; text-decoration: underline; cursor: pointer; color: #006D8E">
             <a id="byuDeleteLink" href="">Unlink</a></td>
-        <td></td>
     </tr>
     <tr id="linkAccountRow" style="display: none">
         <td></td>
         <td onclick="addAccount()" style="cursor: pointer; background: #006D8E 0% 0% no-repeat padding-box; border-radius: 4px;text-align: left; font: 18px/30px Roboto; letter-spacing: 0px; color: #FFFFFF; text-align: center; width: 188px; height: 52px; text-align: center; vertical-align: middle;">
             Link a BYU Account
         </td>
-        <td colspan="3"></td>
+        <td colspan="2"></td>
     </tr>
 
 </table>
@@ -86,9 +68,9 @@
   $(document).ready(function () {
     $( "#signOutButton" ).hover(
       function() {
-        $( this ).attr("style", "cursor: pointer; border: 1px solid #707070; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; color: white; background-color: #006D8E; transition: 0.5s;");
+        $( this ).attr("style", "cursor: pointer; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; color: white; background-color: #333; transition: 0.5s;");
       }, function() {
-        $( this ).attr("style", "cursor: pointer; border: 1px solid #707070; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; color: #006D8E; background-color: white; transition: 0.5s;");
+        $( this ).attr("style", "cursor: pointer; border-radius: 4px; text-align: center; padding: 10px 0px; text-align: center; font: 18px/30px Roboto; font-weight: bold; transition: 0.5s;");
       }
     );
 
@@ -104,6 +86,7 @@
     }
 
     $('#givenName').html(getUrlParameter('givenName'))
+    $('#bannerName').html(getUrlParameter('givenName')+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
     $('#mail').html(getUrlParameter('mail'))
     $('#byuNetId').html(getUrlParameter('byuNetId'))
 
