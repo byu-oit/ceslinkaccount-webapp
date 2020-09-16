@@ -16,3 +16,11 @@ module "setup" {
   source      = "../../modules/setup/"
   env         = "prd"
 }
+
+output "hosted_zone_id" {
+  value = module.setup.hosted_zone.zone_id
+}
+
+output "hosted_zone_name_servers" {
+  value = module.setup.hosted_zone.name_servers
+}
