@@ -14,7 +14,7 @@ provider "aws" {
 
 module "app" {
   source    = "../../modules/app/"
-  env       = "dev"
+  env       = "prd"
 }
 
 output "url" {

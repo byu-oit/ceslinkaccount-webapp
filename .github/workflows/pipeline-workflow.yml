@@ -2,7 +2,7 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [dev]
+    branches: [master, dev]
 env:
   tf_version: "0.12.26"
 

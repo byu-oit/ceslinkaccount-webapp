@@ -75,12 +75,12 @@
     );
 
     if (!getUrlParameter('givenName') || !getUrlParameter('mail')) {
-      window.location.replace('https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginGet')
+      window.location.replace('https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginGet')
     }
 
     if (getUrlParameter('byuId')) {
       $('#byuAccountRow').attr('style', 'display: table-row;')
-      $('#byuDeleteLink').attr('href', 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/delete?byuId=' + getUrlParameter('byuNetId'))
+      $('#byuDeleteLink').attr('href', 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/delete?byuId=' + getUrlParameter('byuNetId'))
     } else {
       $('#linkAccountRow').attr('style', 'display: table-row;')
     }
@@ -91,7 +91,7 @@
     $('#byuNetId').html(getUrlParameter('byuNetId'))
 
     // console.log('ready!')
-    // $.getJSON('https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/api/areTheyLoggedIn', function (data) {
+    // $.getJSON('https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/api/areTheyLoggedIn', function (data) {
     //   console.log('ready2!')
     //   console.log(data) //this works
     //   $.each(data, function (i, field) {
@@ -106,11 +106,11 @@
   })
 
   function addAccount(){
-    window.location.href = "https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginPut"
+    window.location.href = "https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginPut"
   }
 
   function signOut(){
-    window.location.href = "https://login-dev.admissionsapplicationsystem.org/cas/logout"
+    window.location.href = "https://login.admissionsapplicationsystem.org/cas/logout"
   }
 
   var getUrlParameter = function getUrlParameter (sParam) {
