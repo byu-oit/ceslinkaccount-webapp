@@ -114,19 +114,19 @@
     );
 
     if (!getUrlParameter('givenName') || !getUrlParameter('mail')) {
-      window.location.replace('https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginGet')
+      window.location.replace('https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginGet')
     }
 
     if (getUrlParameter('byuId')) {
       $('#byuAccountRow').attr('style', 'display: table-row;')
-      $('#byuDeleteLink').attr('href', 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/delete?byuId=' + getUrlParameter('byuNetId'))
+      $('#byuDeleteLink').attr('href', 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/delete?byuId=' + getUrlParameter('byuNetId'))
     } else {
       $('#linkBYUAccountRow').attr('style', 'display: table-row;')
     }
 
       if (getUrlParameter('byuhId')) {
           $('#byuhAccountRow').attr('style', 'display: table-row;')
-          $('#byuhDeleteLink').attr('href', 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/delete?byuhId=' + getUrlParameter('byuhId'))
+          $('#byuhDeleteLink').attr('href', 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/delete?byuhId=' + getUrlParameter('byuhId'))
       } else {
           $('#linkBYUHAccountRow').attr('style', 'display: table-row;')
       }
@@ -134,7 +134,7 @@
       //todo finish adding ensign college linking in api before uncommenting
       // if (getUrlParameter('ensignId')) {
       //   $('#ensignAccountRow').attr('style', 'display: table-row;')
-      //   $('#ensignDeleteLink').attr('href', 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/delete?ensignId=' + getUrlParameter('ensignId'))
+      //   $('#ensignDeleteLink').attr('href', 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/delete?ensignId=' + getUrlParameter('ensignId'))
       // } else {
       //   $('#linkEnsignAccountRow').attr('style', 'display: table-row;')
       // }
@@ -162,15 +162,15 @@
   })
 
   function addBYUAccount(){
-      window.location.href = "https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginBYUPut"
+      window.location.href = "https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginBYUPut"
   }
 
   function addBYUHAccount(){
-      window.location.href = "https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginBYUHPut"
+      window.location.href = "https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginBYUHPut"
   }
 
   function addEnsignAccount(){
-      window.location.href = "https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginEnsignPut"
+      window.location.href = "https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginEnsignPut"
   }
 
   function signOut(){
