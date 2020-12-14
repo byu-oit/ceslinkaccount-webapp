@@ -14,24 +14,24 @@ jobs:
       - name: Setup DEV Environment Variables
         if: github.ref == 'refs/heads/dev'
         run: |
-          echo "::set-env name=aws_key::${{ secrets.ces_identity_dev_key }}"
-          echo "::set-env name=aws_secret::${{ secrets.ces_identity_dev_secret }}"
-          echo "::set-env name=tf_working_dir::./terraform-iac/dev/app"
-          echo "::set-env name=std_change_key::${{ secrets.standard_change_sandbox_client_key }}"
-          echo "::set-env name=std_change_secret::${{ secrets.standard_change_sandbox_client_secret }}"
-          echo "::set-env name=rfc_template_id::Codepipeline-Standard-Change"
-          echo "::set-env name=slack_channel::C0AGQEZMF" #slack-bot-testing
+          echo "aws_key=${{ secrets.ces_identity_dev_key }}" >> $GITHUB_ENV
+          echo "aws_secret=${{ secrets.ces_identity_dev_secret }}" >> $GITHUB_ENV
+          echo "tf_working_dir=./terraform-iac/dev/app" >> $GITHUB_ENV
+          echo "std_change_key=${{ secrets.standard_change_sandbox_client_key }}" >> $GITHUB_ENV
+          echo "std_change_secret=${{ secrets.standard_change_sandbox_client_secret }}" >> $GITHUB_ENV
+          echo "rfc_template_id=Codepipeline-Standard-Change" >> $GITHUB_ENV
+          echo "slack_channel=C0AGQEZMF" >> $GITHUB_ENV #slack-bot-testing
 
       - name: Setup PRD Environment Variables
         if: github.ref == 'refs/heads/master'
         run: |
-          echo "::set-env name=aws_key::${{ secrets.ces_identity_prd_key }}"
-          echo "::set-env name=aws_secret::${{ secrets.ces_identity_prd_secret }}"
-          echo "::set-env name=tf_working_dir::./terraform-iac/prd/app"
-          echo "::set-env name=std_change_key::${{ secrets.standard_change_production_client_key }}"
-          echo "::set-env name=std_change_secret::${{ secrets.standard_change_production_client_secret }}"
-          echo "::set-env name=rfc_template_id::Codepipeline-Standard-Change"
-          echo "::set-env name=slack_channel::C0AGQEZMF" #slack-bot-testing
+          echo "aws_key=${{ secrets.ces_identity_prd_key }}" >> $GITHUB_ENV
+          echo "aws_secret=${{ secrets.ces_identity_prd_secret }}" >> $GITHUB_ENV
+          echo "tf_working_dir=./terraform-iac/prd/app" >> $GITHUB_ENV
+          echo "std_change_key=${{ secrets.standard_change_production_client_key }}" >> $GITHUB_ENV
+          echo "std_change_secret=${{ secrets.standard_change_production_client_secret }}" >> $GITHUB_ENV
+          echo "rfc_template_id=Codepipeline-Standard-Change" >> $GITHUB_ENV
+          echo "slack_channel=C0AGQEZMF" >> $GITHUB_ENV #slack-bot-testing
 
       - name: Check out
         uses: actions/checkout@v2
