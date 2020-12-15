@@ -120,7 +120,7 @@
     )
 
     if (!getUrlParameter('givenName') || !getUrlParameter('mail')) {
-      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')) {
+      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
         window.location.replace('https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginGet')
       } else {
         window.location.replace('https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginGet')
@@ -129,7 +129,7 @@
 
     if (getUrlParameter('byuId')) {
       $('#byuAccountRow').attr('style', 'display: table-row;')
-      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')) {
+      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
         $('#byuDeleteLink').attr('href', 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/delete?byuId=' + getUrlParameter('byuId'))
       } else {
         $('#byuDeleteLink').attr('href', 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/delete?byuId=' + getUrlParameter('byuId'))
@@ -140,7 +140,7 @@
 
     if (getUrlParameter('byuhId')) {
       $('#byuhAccountRow').attr('style', 'display: table-row;')
-      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')) {
+      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
         $('#byuhDeleteLink').attr('href', 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/delete?byuhId=' + getUrlParameter('byuhId'))
       } else {
         $('#byuhDeleteLink').attr('href', 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/delete?byuhId=' + getUrlParameter('byuhId'))
@@ -180,7 +180,7 @@
   })
 
   function addBYUAccount () {
-    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')) {
+    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
       window.location.href = 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginBYUPut'
     } else {
       window.location.href = 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginBYUPut'
@@ -188,7 +188,7 @@
   }
 
   function addBYUHAccount () {
-    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')) {
+    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
       window.location.href = 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginBYUHPut'
     } else {
       window.location.href = 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginBYUHPut'
@@ -196,7 +196,7 @@
   }
 
   function addEnsignAccount () {
-    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')) {
+    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
       window.location.href = 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginEnsignPut'
     } else {
       window.location.href = 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginEnsignPut'
@@ -204,7 +204,7 @@
   }
 
   function signOut () {
-    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')) {
+    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
       window.location.href = 'https://login-dev.admissionsapplicationsystem.org/cas/logout'
     } else {
       window.location.href = 'https://login-prd.admissionsapplicationsystem.org/cas/logout'
