@@ -63,14 +63,13 @@
         <td style="font: 18px/22px Roboto; text-decoration: underline; cursor: pointer; color: #006D8E">
             <a id="byuhDeleteLink" href="">Unlink</a></td>
     </tr>
-    <!--todo finish adding ensign college linking on api before uncommenting-->
-    <!--<tr id="ensignAccountRow" style="display: none;">-->
-    <!--<td></td>-->
-    <!--<td style="font: 18px/22px Roboto; font-weight: bold;">Ensign College ID:</td>-->
-    <!--<td id="ensignId" style="font: 18px/22px Roboto;"></td>-->
-    <!--<td style="font: 18px/22px Roboto; text-decoration: underline; cursor: pointer; color: #006D8E">-->
-    <!--<a id="ensignDeleteLink" href="">Unlink</a></td>-->
-    <!--</tr>-->
+    <tr id="ensignAccountRow" style="display: none;">
+        <td></td>
+        <td style="font: 18px/22px Roboto; font-weight: bold;">Ensign College ID:</td>
+        <td id="ensignId" style="font: 18px/22px Roboto;"></td>
+        <td style="font: 18px/22px Roboto; text-decoration: underline; cursor: pointer; color: #006D8E">
+            <a id="ensignDeleteLink" href="">Unlink</a></td>
+    </tr>
     <tr>
         <td colspan="5" style="line-height: 25px;">&nbsp;</td>
     </tr>
@@ -120,7 +119,7 @@
     )
 
     if (!getUrlParameter('givenName') || !getUrlParameter('mail')) {
-      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
+      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
         window.location.replace('https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginGet')
       } else {
         window.location.replace('https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginGet')
@@ -129,7 +128,7 @@
 
     if (getUrlParameter('byuId')) {
       $('#byuAccountRow').attr('style', 'display: table-row;')
-      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
+      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
         $('#byuDeleteLink').attr('href', 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/delete?byuId=' + getUrlParameter('byuId'))
       } else {
         $('#byuDeleteLink').attr('href', 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/delete?byuId=' + getUrlParameter('byuId'))
@@ -140,7 +139,7 @@
 
     if (getUrlParameter('byuhId')) {
       $('#byuhAccountRow').attr('style', 'display: table-row;')
-      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
+      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
         $('#byuhDeleteLink').attr('href', 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/delete?byuhId=' + getUrlParameter('byuhId'))
       } else {
         $('#byuhDeleteLink').attr('href', 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/delete?byuhId=' + getUrlParameter('byuhId'))
@@ -149,20 +148,23 @@
       $('#linkBYUHAccountRow').attr('style', 'display: table-row;')
     }
 
-    //todo finish adding ensign college linking in api before uncommenting
-    // if (getUrlParameter('ensignId')) {
-    //   $('#ensignAccountRow').attr('style', 'display: table-row;')
-    //   $('#ensignDeleteLink').attr('href', 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/delete?ensignId=' + getUrlParameter('ensignId'))
-    // } else {
-    //   $('#linkEnsignAccountRow').attr('style', 'display: table-row;')
-    // }
+    if (getUrlParameter('ensignId')) {
+      $('#ensignAccountRow').attr('style', 'display: table-row;')
+      if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
+        $('#ensignDeleteLink').attr('href', 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/delete?ensignId=' + getUrlParameter('ensignId'))
+      } else {
+        $('#ensignDeleteLink').attr('href', 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/delete?ensignId=' + getUrlParameter('ensignId'))
+      }
+    } else {
+      $('#linkEnsignAccountRow').attr('style', 'display: table-row;')
+    }
 
     $('#givenName').html(getUrlParameter('givenName'))
     $('#bannerName').html(getUrlParameter('givenName') + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
     $('#mail').html(getUrlParameter('mail'))
     $('#byuNetId').html(getUrlParameter('byuNetId'))
     $('#byuhId').html(getUrlParameter('byuhId'))
-    // $('#ensignId').html(getUrlParameter('ensignId'))  //todo finish adding ensign college linking on api before uncommenting
+    $('#ensignId').html(getUrlParameter('ensignId'))
 
     // console.log('ready!')
     // $.getJSON('https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/api/areTheyLoggedIn', function (data) {
@@ -180,7 +182,7 @@
   })
 
   function addBYUAccount () {
-    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
+    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
       window.location.href = 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginBYUPut'
     } else {
       window.location.href = 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginBYUPut'
@@ -188,7 +190,7 @@
   }
 
   function addBYUHAccount () {
-    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
+    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
       window.location.href = 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginBYUHPut'
     } else {
       window.location.href = 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginBYUHPut'
@@ -196,7 +198,7 @@
   }
 
   function addEnsignAccount () {
-    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
+    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
       window.location.href = 'https://ceslinkaccount-api-dev.ces-identity-dev.amazon.byu.edu/loginEnsignPut'
     } else {
       window.location.href = 'https://ceslinkaccount-api-prd.ces-identity-prd.amazon.byu.edu/loginEnsignPut'
@@ -204,7 +206,7 @@
   }
 
   function signOut () {
-    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org')==0) {
+    if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
       window.location.href = 'https://login-dev.admissionsapplicationsystem.org/cas/logout'
     } else {
       window.location.href = 'https://login-prd.admissionsapplicationsystem.org/cas/logout'
