@@ -49,6 +49,7 @@
     <tr>
         <td colspan="5" style="line-height: 25px;">&nbsp;</td>
     </tr>
+<!-- Linked Accounts and Unlink Option -->
     <tr id="byuAccountRow" style="display: none;">
         <td></td>
         <td style="font: 18px/22px Roboto; font-weight: bold;">BYU Net ID:</td>
@@ -73,6 +74,7 @@
     <tr>
         <td colspan="5" style="line-height: 25px;">&nbsp;</td>
     </tr>
+<!-- Accounts To Be Linked -->
     <tr id="linkBYUAccountRow" style="display: none;">
         <td></td>
         <td onclick="addBYUAccount()"
@@ -126,6 +128,7 @@
       }
     }
 
+    // check if BYU account is linked
     if (getUrlParameter('byuId')) {
       $('#byuAccountRow').attr('style', 'display: table-row;')
       if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
@@ -137,6 +140,7 @@
       $('#linkBYUAccountRow').attr('style', 'display: table-row;')
     }
 
+    // check if BYU-H account is linked
     if (getUrlParameter('byuhId')) {
       $('#byuhAccountRow').attr('style', 'display: table-row;')
       if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
@@ -148,6 +152,7 @@
       $('#linkBYUHAccountRow').attr('style', 'display: table-row;')
     }
 
+    //check if Ensign account is linked
     if (getUrlParameter('ensignId')) {
       $('#ensignAccountRow').attr('style', 'display: table-row;')
       if (window.location.href.indexOf('https://account-dev.admissionsapplicationsystem.org') == 0) {
